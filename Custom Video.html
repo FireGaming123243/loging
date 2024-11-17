@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<!-- saved from url=(0051)https://hitiktok.w3spaces-preview.com/mincraft.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+    <title>Custom Video</title>
+    <style>
+        /* Global styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        /* ... (previous styles) ... */
+
+        /* Form styles */
+        form {
+            text-align: center;
+            margin: 20px auto;
+            padding: 20px;
+            max-width: 400px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        form h2 {
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #ff5722;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #ff7043;
+        }
+
+        /* Global styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        /* Header styles */
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        /* Navigation links styles */
+        .navigation {
+            text-align: center;
+            margin: 10px 0;
+        }
+
+        .navigation a {
+            display: inline-block;
+            margin: 0 15px;
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .navigation a:hover {
+            color: #ff5722;
+        }
+
+        /* Video container styles */
+        .video-container {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        /* Video iframe styles */
+        .video {
+            margin: 10px;
+            max-width: 100%;
+            transition: transform 0.3s ease;
+        }
+
+        .video.full-screen {
+            transform: scale(1.2); /* Enlarge the video */
+        }
+
+        /* Form styles */
+        form {
+            text-align: center;
+            margin: 20px auto;
+            padding: 20px;
+            max-width: 400px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        /* ... (rest of your styles) ... */
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Custom Video</h1>
+    </header>
+    <div class="navigation">
+        <a href="https://hitiktok.w3spaces-preview.com/Error2.html">BenKeysar</a>
+        <a href="https://hitiktok.w3spaces-preview.com/Home.html">Home</a>
+    </div>
+    <div class="video-container">
+        <iframe id="player" frameborder="0" allowfullscreen="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" title="5 &#1512;&#1493;&#1510;&#1495;&#1497;&#1501; &#1504;&#1490;&#1491; 5 &#1512;&#1493;&#1510;&#1495;&#1497;&#1501; &#1489;&#1488;&#1502;&#1493;&#1504;&#1490; &#1488;&#1505;!!!" width="560" height="315" src="./Custom Video_files/DfQhMEZiPz4.html"></iframe>
+    </div>
+    <div>
+        <form id="addVideoForm">
+            <h2>Add a New Video</h2>
+            <input type="text" id="videoUrl" placeholder="Enter YouTube video URL">
+            <div class="container">
+            <a href="https://hitiktok.w3spaces-preview.com/new-file-1.html" class="video-link">Add Video</a>
+    </div>
+  <script type="text/javascript" id="www-widgetapi-script" src="./Custom Video_files/www-widgetapi.js.&#1492;&#1493;&#1512;&#1491;&#1492;" async=""></script><script>
+        const videoUrls = [
+            "https://www.youtube.com/watch?v=DfQhMEZiPz4",
+            "https://www.youtube.com/watch?v=rhElpK049Ig",
+        ];
+
+        const videoContainer = document.querySelector('.video-container');
+        const form = document.getElementById('addVideoForm');
+        let currentVideoIndex = 0;
+        let player;
+
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('player', {
+                height: '315',
+                width: '560',
+                videoId: extractVideoId(videoUrls[currentVideoIndex]),
+                playerVars: {
+                    controls: 1,
+                    modestbranding: 1,
+                    rel: 0
+                },
+                events: {
+                    onReady: onPlayerReady,
+                    onStateChange: onPlayerStateChange
+                }
+            });
+        }
+
+        function onPlayerReady(event) {
+            event.target.playVideo();
+        }
+
+        function onPlayerStateChange(event) {
+            if (event.data === YT.PlayerState.ENDED) {
+                currentVideoIndex = (currentVideoIndex + 1) % videoUrls.length;
+                loadVideoByIndex(currentVideoIndex);
+            }
+        }
+
+        function loadVideoByIndex(index) {
+            const videoId = extractVideoId(videoUrls[index]);
+            if (videoId) {
+                player.loadVideoById(videoId);
+            }
+        }
+
+        function extractVideoId(url) {
+            const match = url.match(/v=([a-zA-Z0-9_-]+)/);
+            return match ? match[1] : null;
+        }
+
+        form.addEventListener('submit', function (event) {
+            event.preventDefault();
+            const videoUrlInput = document.getElementById('videoUrl');
+            const videoUrl = videoUrlInput.value;
+            if (videoUrl) {
+                videoUrls.push(videoUrl);
+                videoUrlInput.value = '';
+            }
+        });
+    </script>
+    <script src="./Custom Video_files/iframe_api"></script>
+    <script>
+        // Add JavaScript for control buttons
+        const homeButton = document.getElementById('homeButton');
+        const resizeButton = document.getElementById('resizeButton');
+        const videoContainer = document.querySelector('.video-container');
+
+        homeButton.addEventListener('click', () => {
+            // Replace with your home page logic
+            window.location.href = 'index.html';
+        });
+
+        resizeButton.addEventListener('click', () => {
+            const video = document.querySelector('.video');
+            video.classList.toggle('full-screen');
+        });
+    </script>
+
+
+<style>
+
+
+.video-link {
+    display: inline-block;
+    padding: 12px 60px;
+    background-color: #ff5722;
+    color: #ffffff;
+    font-size: 18px;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.5s ease;
+}
+
+.video-link:hover {
+    background-color: #ff5722;
+}
+</style></form></div></body></html>

